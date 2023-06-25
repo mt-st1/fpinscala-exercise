@@ -1,3 +1,5 @@
+package fpinscala.part1.ch04
+
 //hide std library `Option` and `Either`, since we are writing our own in this chapter
 import scala.{Option => _, Either => _, _}
 
@@ -46,7 +48,7 @@ object Option {
   // aの型として => A が指定されており、非正格な引数(遅延引数, 関数内でその引数が呼び出されたときに評価される)を使用
   def Try[A](a: => A): Option[A] =
     try Some(a)
-    catch { case e: Exception => Non }
+    catch { case e: Exception => None }
 
   // [ex4.3] 2項関数を使ってOption型の2つの値を結合する総称関数 map2 を記述せよ
   // どちらかのOptioon値が None の場合は、戻り値も None になる

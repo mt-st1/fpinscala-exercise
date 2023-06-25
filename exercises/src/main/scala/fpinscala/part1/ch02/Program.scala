@@ -1,10 +1,12 @@
+package fpinscala.part1.ch02
+
 object Program {
   // [ex2.1] n番目のフィボナッチ数を取得する関数
   def fib(n: Int): Int = {
     @annotation.tailrec
-    def loop(n: Int, prev: Int, cur: Int) =
+    def loop(n: Int, prev: Int, cur: Int): Int =
       if (n == 0) prev
-      else go(n - 1, cur, prev + cur)
+      else loop(n - 1, cur, prev + cur)
 
     loop(n, 0, 1)
   }
@@ -14,7 +16,7 @@ object Program {
     @annotation.tailrec
     def loop(n: Int): Boolean =
       if (as.size <= n) true
-      else if (gt(as[n], as[n+1])) false
+      else if (gt(as(n), as(n+1))) false
       else loop(n+1)
 
     loop(0)

@@ -1,3 +1,5 @@
+package fpinscala.part1.ch03
+
 sealed trait List[+A]  // Listデータ型
 case object Nil extends List[Nothing]  // 空のリストを表すデータコンストラクタ
 case class Cons[+A](head: A, tail: List[A]) extends List[A]  // 空ではないリストを表すデータコンストラクタ

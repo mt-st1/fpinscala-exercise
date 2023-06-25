@@ -1,3 +1,5 @@
+package fpinscala.part1.ch04
+
 //hide std library `Option` and `Either`, since we are writing our own in this chapter
 import scala.{Option => _, Either => _, _}
 
@@ -48,7 +50,7 @@ object Either {
 
   // [ex4.7] Either で sequence と traverse を実装せよ (これらはエラーが発生した場合に、最初に検出されたエラーを返すものとする)
   def sequence[E, A](es: List[Either[E, A]]): Either[E, List[A]] =
-    traverse(es)(_)
+    traverse(es)(x => x)
 
   def traverse[E, A, B](as: List[A])(f: A => Either[E, B]): Either[E, List[B]] =
     as.foldRight[Either[E, List[B]]](Right(Nil))((x, acc) => f(x).map2(acc)(_ :: _))
